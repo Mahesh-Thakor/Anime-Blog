@@ -34,7 +34,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return $post;
+        return View::make('welcome')
+            ->with("post", $post);
     }
 
 
