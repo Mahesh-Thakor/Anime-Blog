@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/blog');
 });
 
 Route::get('/blog', [PostController::class, 'index']);
@@ -31,7 +31,7 @@ Route::delete('/blog/{post}', [PostController::class, 'destroy']);
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/{user}', [UserController::class, 'show']);
 Route::get('/user/create/user', [UserController::class, 'create']);
-Route::post('/user/create/u ser', [UserController::class, 'store']);
+Route::post('/user/create/user', [UserController::class, 'store']);
 Route::get('/user/{user}/edit', [UserController::class, 'edit']);
 Route::put('/user/{user}/edit', [UserController::class, 'update']);
 Route::delete('/user/{user}', [UserController::class, 'destroy']);

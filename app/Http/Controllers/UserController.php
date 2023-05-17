@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use View;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,6 +13,8 @@ class UserController extends Controller
         $users = User::with(
             [
                 'posts',
+                'posts.comments',
+                'posts.comments.user'
             ]
         )->get();
         return View::make('welcome')
