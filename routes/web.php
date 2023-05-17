@@ -18,12 +18,13 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    // return Inertia::render('Welcome', [
+    //     'canLogin' => Route::has('login'),
+    //     'canRegister' => Route::has('register'),
+    //     'laravelVersion' => Application::VERSION,
+    //     'phpVersion' => PHP_VERSION,
+    // ]);
+    return redirect('/blog');
 });
 
 Route::get('/dashboard', function () {
@@ -39,4 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/blog/{post}', [PostController::class, 'show'])->name('blog.show');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/{user}', [UserController::class, 'show']);
+Route::get('/user/create/user', [UserController::class, 'create']);
+Route::post('/user/create/user', [UserController::class, 'store']);
+Route::get('/user/{user}/edit', [UserController::class, 'edit']);
+Route::put('/user/{user}/edit', [UserController::class, 'update']);
+Route::delete('/user/{user}', [UserController::class, 'destroy']);
+//require __DIR__.'/auth.php';
