@@ -17,7 +17,7 @@ class UserController extends Controller
                 'posts.comments.user'
             ]
         )->get();
-        return View::make('welcome')
+        return View::make('user.user_index')
             ->with("users", $users);
     }
 
@@ -36,7 +36,7 @@ class UserController extends Controller
     {        
         $user->loadMissing('posts');
         $posts = $user->posts;
-        return View::make('welcome')
+        return View::make('user.user_show')
             ->with("user", $user)
             ->with("user_posts", $posts);
     }

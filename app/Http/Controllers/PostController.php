@@ -17,7 +17,7 @@ class PostController extends Controller
                 'comments.user'
             ]
         )->get();
-        return View::make('welcome')
+        return View::make('post.post_index')
             ->with("posts", $posts);
     }
 
@@ -34,7 +34,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return View::make('welcome')
+        return View::make('post.post_show')
             ->with("post", $post);
     }
 
